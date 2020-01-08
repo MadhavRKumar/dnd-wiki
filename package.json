@@ -1,0 +1,31 @@
+{
+  "name": "dnd-wiki",
+  "version": "1.0.0",
+  "description": "A simple Markdown-based wiki for the constructed universe of our D&D campaign.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MadhavRKumar/dnd-wiki.git"
+  },
+  "keywords": [],
+  "author": "Madhav Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MadhavRKumar/dnd-wiki/issues"
+  },
+  "homepage": "https://github.com/MadhavRKumar/dnd-wiki#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "pg": "^7.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
