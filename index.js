@@ -26,51 +26,65 @@ const getArticle = (req, res) => {
 }
 
 const createArticle = (req, res) => {
-    const { pageTitle, text } = req.body;
-
-    
+    postArticle(req, res, true).catch(err =>  {
+        console.error('Error executing query', err.stack)
+    });
 }
 
 const editArticle = (req, res) => {
-    const { pageTitle, text } = req.body;
-
-    (async () => {
-        const client = await pool.connect();
-
-        try {
-            await client.query('BEGIN');
-
-            const pageRes = await client.query('SELECT id FROM pages WHERE page_title = $1', [pageTitle]);
-            const pageID = pageRes.rows[0].id;
-            
-            const textRes = await client.query('INSERT INTO text (text) VALUES ($1) RETURNING id', [text]);
-            const textID = textRes.rows[0].id;
-
-            const insertRevValues = [pageID, textID];
-            const revRes = await client.query('INSERT INTO revision (rev_page, rev_text_id) VALUES ($1, $2) RETURNING id', insertRevValues);
-            const revID = revRes.rows[0].id;
-            const updateRevValues = [revID, pageID];
-
-            await client.query('UPDATE pages SET page_latest = $1 WHERE id = $2', [updateRevValues]);
-            await client.query('COMMIT');
-
-        } catch (err) {
-            await client.query('ROLLBACK');
-            throw err;
-        }
-        finally {
-            client.release();
-            res.status(201).send(`Article '${pageTitle}' successfully edited`);
-        }
-
-
-    })().catch(err => console.error('Error executing query', err.stack))
-
-    
+    postArticle(req, res, false).catch(err => {
+        console.error('Error executing query', err.stack)
+    });    
 }
 
 
+async function postArticle(req, res, isNewArticle) {
+    const client = await pool.connect();
+    const { text } = req.body;
+    const pageTitle = req.params.pageTitle;
+
+    try {
+        await client.query('BEGIN');
+        
+         const pageQuery = isNewArticle ? 'INSERT INTO pages (page_title) VALUES ($1) RETURNING id' : 'SELECT id FROM pages WHERE lower(page_title) = lower($1)';
+
+        const pageRes = await client.query(pageQuery, [pageTitle]);
+        const pageID = pageRes.rows[0].id;
+
+        const textRes = await client.query('INSERT INTO text (text) VALUES ($1) RETURNING id', [text]);
+        const textID = textRes.rows[0].id;
+
+        const insertRevValues = [pageID, textID];
+        const revRes = await client.query('INSERT INTO revisions (rev_page_id, rev_text_id) VALUES ($1, $2) RETURNING id', insertRevValues);
+
+        const revID = revRes.rows[0].id;
+        const updateRevValues = [revID, pageID];
+
+        await client.query('UPDATE pages SET page_latest = $1 WHERE id = $2', updateRevValues);
+        await client.query('COMMIT');
+
+        if(isNewArticle) {
+            res.status(201).send(`Article '${pageTitle}' successfully created`);
+        }
+        else {
+           res.status(200).send(`Article '${pageTitle}' successfully edited`);
+        }
+
+    } catch (err) {
+        await client.query('ROLLBACK');
+        throw err;
+    }
+    finally {
+        client.release();
+
+    }
+
+
+}
+
 app.get('/:pageTitle', getArticle);
+app.post('/:pageTitle', createArticle);
+app.put('/:pageTitle', editArticle);
 
 app.listen(process.env.PORT || 3002, () => {
     console.log(`App running on port ${process.env.PORT || 3002}.`)
