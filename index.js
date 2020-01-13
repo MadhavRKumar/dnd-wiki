@@ -26,9 +26,24 @@ const getArticle = (req, res) => {
 }
 
 const createArticle = (req, res) => {
-    postArticle(req, res, true).catch(err =>  {
-        console.error('Error executing query', err.stack)
-    });
+    const pageTitle = req.params.pageTitle;
+    pool.query('SELECT id FROM pages WHERE lower(page_title) = lower($1)', [pageTitle],
+        (err, result) => {
+            if(err) {
+                return console.error('Error executing query', err.stack)
+            }
+            if(result.rows.length > 0) {
+                res.status(400).send(`'${pageTitle}' already exists!`);
+            }
+            else {
+                postArticle(req, res, true).catch(err =>  {
+                    console.error('Error executing query', err.stack)
+                });
+            }
+        }
+    )
+
+
 }
 
 const editArticle = (req, res) => {
@@ -46,7 +61,7 @@ async function postArticle(req, res, isNewArticle) {
     try {
         await client.query('BEGIN');
         
-         const pageQuery = isNewArticle ? 'INSERT INTO pages (page_title) VALUES ($1) RETURNING id' : 'SELECT id FROM pages WHERE lower(page_title) = lower($1)';
+        const pageQuery = isNewArticle ? 'INSERT INTO pages (page_title) VALUES ($1) RETURNING id' : 'SELECT id FROM pages WHERE lower(page_title) = lower($1)';
 
         const pageRes = await client.query(pageQuery, [pageTitle]);
         const pageID = pageRes.rows[0].id;
@@ -72,6 +87,8 @@ async function postArticle(req, res, isNewArticle) {
 
     } catch (err) {
         await client.query('ROLLBACK');
+        let errMessage = isNewArticle ? `Failed to create '${pageTitle}'` : `Failed to edit '${pageTitle}'`;
+        res.status(400).send(errMessage);
         throw err;
     }
     finally {
