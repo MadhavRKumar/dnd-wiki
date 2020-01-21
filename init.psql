@@ -1,7 +1,12 @@
+CREATE TABLE text (
+    ID SERIAL PRIMARY KEY,
+    text TEXT
+);
+
 CREATE TABLE pages (
     ID SERIAL PRIMARY KEY,
     page_title VARCHAR(255) UNIQUE,
-    page_latest INTEGER CONSTRAINT fk_page_latest REFERENCES revisions(id)
+    page_latest INTEGER
 );
 
 
@@ -11,7 +16,5 @@ CREATE TABLE revisions (
     rev_text_id INTEGER CONSTRAINT fk_rev_text_id REFERENCES text(id)
 );
 
-CREATE TABLE text (
-    ID SERIAL PRIMARY KEY,
-    text TEXT
-);
+
+ALTER TABLE pages ADD CONSTRAINT fk_page_latest FOREIGN KEY (page_latest) REFERENCES revisions(id);
