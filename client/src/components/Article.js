@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import '../App.css'
+import '../App.css';
 
 function parseTitle(pageTitle) {
     let str = pageTitle.replace('_', ' ');
@@ -28,7 +28,7 @@ function Article() {
     
 
     function getRawHTML() {
-        return {__html: text}
+        return {__html: text};
     }
 
     return (
