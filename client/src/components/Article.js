@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import '../App.css'
 
 function parseTitle(pageTitle) {
-    return pageTitle.replace('_', ' ');
+    let str = pageTitle.replace('_', ' ');
+    let cap = str.charAt(0).toUpperCase();
+    return cap + str.substring(1);
 }
 function Article() {
     let { pageTitle } = useParams();
     let parsedTitle = parseTitle(pageTitle);
     let [text, setText] = useState(null);
+
     let callAPI = async (pageTitle) => {
         const response = await fetch(`/${pageTitle}`);
         const body = await response.json();
@@ -23,11 +27,16 @@ function Article() {
     });
     
 
+    function getRawHTML() {
+        return {__html: text}
+    }
 
     return (
-        <div>
-            <h1 className="title">{parsedTitle}</h1>
-            <p className="text">{text}</p>
+        <div className="article">
+            <div className="title">
+                <h1>{parsedTitle}</h1>
+            </div>
+            <div className="text" dangerouslySetInnerHTML={getRawHTML()}></div>
         </div>
     );
 }
