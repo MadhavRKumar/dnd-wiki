@@ -52,6 +52,34 @@ body {
   font-size: 75%;
 }
 
+button {
+  display: block;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 5% auto;
+  text-decoration: none;
+  background: #0ca13e;
+  color: #ffffff;
+  font-family: Oxygen;
+  font-size: 1.5em;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  transition: background 125ms ease-in-out, 
+              transform 75ms ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button:hover,
+button:focus {
+  background: #097e30;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
 
 
 /* Classes */

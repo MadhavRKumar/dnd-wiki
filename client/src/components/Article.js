@@ -32,12 +32,18 @@ function Article() {
     }
 
     return (
-        <div className="article">
-            <div className="title">
-                <h1>{parsedTitle}</h1>
+        <div className="article-container">
+            <div className="article">
+                <div className="title">
+                    <h1>{parsedTitle}</h1>
+                </div>
+                <div className="text" dangerouslySetInnerHTML={getRawHTML()}></div>
             </div>
-            <div className="text" dangerouslySetInnerHTML={getRawHTML()}></div>
+            <button className="edit-button">
+                Edit Article
+            </button>
         </div>
+
     );
 }
 
