@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import '../App.css';
 
 function parseTitle(pageTitle) {
@@ -39,9 +39,10 @@ function Article() {
                 </div>
                 <div className="text" dangerouslySetInnerHTML={getRawHTML()}></div>
             </div>
-            <button className="edit-button">
+            <Link className="edit-button" to={`/edit/${pageTitle}`}>
                 Edit Article
-            </button>
+            </Link>
+
         </div>
 
     );

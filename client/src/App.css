@@ -52,11 +52,18 @@ body {
   font-size: 75%;
 }
 
-button {
+/* Classes */
+
+.article {
+  margin: 0 15% 5% 15%;
+}
+
+.edit-button {
   display: block;
   border: none;
   padding: 1rem 2rem;
   margin: 5% auto;
+  width: 150px;
   text-decoration: none;
   background: #0ca13e;
   color: #ffffff;
@@ -65,27 +72,15 @@ button {
   cursor: pointer;
   border-radius: 5px;
   text-align: center;
-  transition: background 125ms ease-in-out, 
-              transform 75ms ease-in-out;
+  transition: background 125ms ease-in-out;
   -webkit-appearance: none;
   -moz-appearance: none;
+  text-decoration: none;
 }
 
-button:hover,
-button:focus {
+.edit-button:hover,
+.edit-button:focus {
   background: #097e30;
-}
-
-button:active {
-  transform: scale(0.97);
-}
-
-
-
-/* Classes */
-
-.article {
-  margin: 0 15% 5% 15%;
 }
 
 .title {
