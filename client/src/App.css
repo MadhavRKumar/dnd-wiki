@@ -88,6 +88,20 @@ body {
   transform: scale(0.97);
 }
 
+.loader {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 5px solid  #0ca13e;
+  border-top-color: white;
+  margin: 10% auto 5% auto;
+  animation: spin 1s infinite linear;
+}
+
+.loading-container {
+  text-align: center;
+  font-family: 'Oxygen';
+}
 .title {
   font-family: 'Rufina';
   font-size: 2.8em;
@@ -115,5 +129,17 @@ body {
 
   .text {
     line-height: 1.75;
+  }
+}
+
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }

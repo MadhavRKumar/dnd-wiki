@@ -2,12 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
 import useAPI from '../hooks/useAPI';
+import Loader from './Loader';
 
 
 
 function Article() {
-   let {title, text} = useAPI();
-        return (
+   let {title, text, isLoading} = useAPI();
+   if(isLoading){
+    return (<Loader/>);
+   }
+   else {
+    return (
         <div className="article-container">
             <div className="article">
                 <div className="title">
@@ -22,6 +27,8 @@ function Article() {
         </div>
 
     );
+   }
+ 
 }
 
 export default Article;

@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import useAPI from '../hooks/useAPI';
 import { useHistory } from 'react-router-dom';
+import Loader from './Loader';
 
 export default function EditArticle() {
 
@@ -51,6 +52,6 @@ export default function EditArticle() {
         );
     }
     else {
-        return (<div>Loading</div>);
+        return (<Loader/>);
     }
 }
