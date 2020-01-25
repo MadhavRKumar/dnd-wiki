@@ -18,7 +18,7 @@ function Article() {
                 <div className="title">
                     <h1>{title}</h1>
                 </div>
-                <div className="text" dangerouslySetInnerHTML={text}></div>
+                <div className="text trix-content" dangerouslySetInnerHTML={text}></div>
             </div>
             <Link className="edit-button" to={`/edit/${title}`}>
                 Edit Article

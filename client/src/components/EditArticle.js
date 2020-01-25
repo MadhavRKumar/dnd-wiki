@@ -42,7 +42,7 @@ export default function EditArticle() {
                         <h1>{title}</h1>
                     </div>
                     <form>
-                        <trix-editor input="input"></trix-editor>
+                        <trix-editor class="trix-content" input="input"></trix-editor>
                         <input id="input" ref={inputEl} type="hidden" name="content" value={text.__html}></input>
                     </form>
 

@@ -52,6 +52,10 @@ body {
   font-size: 75%;
 }
 
+trix-toolbar {
+  overflow: auto;
+}
+
 /* Classes */
 
 .article {
@@ -116,6 +120,24 @@ body {
   padding-right: 2px;
 }
 
+.trix-content {
+  font-family: 'Oxygen';
+}
+
+.trix-content > div > em {
+  font-style: italic;
+}
+
+.trix-content > div > strong {
+  font-weight: bold;
+}
+
+.trix-content > h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+  font-family: 'Rufina';
+}
+
 
 /* Larger than mobile styling */
 @media screen and (min-width: 900px) {
@@ -124,7 +146,7 @@ body {
   }
 
   .title {
-    margin: 5% 33% 5% auto;
+    margin: 5% 33% 2.5% auto;
   }
 
   .text {
