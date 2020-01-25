@@ -72,7 +72,8 @@ body {
   cursor: pointer;
   border-radius: 5px;
   text-align: center;
-  transition: background 125ms ease-in-out;
+  transition: background 125ms ease-in-out
+              transform 75ms ease-in-out;
   -webkit-appearance: none;
   -moz-appearance: none;
   text-decoration: none;
@@ -81,6 +82,10 @@ body {
 .edit-button:hover,
 .edit-button:focus {
   background: #097e30;
+}
+
+.edit-button:focus {
+  transform: scale(0.97);
 }
 
 .title {
