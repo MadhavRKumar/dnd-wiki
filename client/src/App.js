@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import './App.css';
 import EditArticle from './components/EditArticle';
+import Home from './components/Home';
 
 class App extends Component {
 
@@ -20,6 +21,9 @@ class App extends Component {
           </Route>
           <Route path='/edit/:pageTitle'>
             <EditArticle/>
+          </Route>
+          <Route path='/'>
+              <Home/>
           </Route>
         </Switch>
       </Router>
