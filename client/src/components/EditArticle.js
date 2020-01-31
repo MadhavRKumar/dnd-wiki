@@ -37,16 +37,16 @@ export default function EditArticle() {
     if (!isLoading) {
         return (
             <div className="article-container">
-                <div className="article">
-                    <div className="title">
+                <article>
+                    <header className="title">
                         <h1>{title}</h1>
-                    </div>
+                    </header>
                     <form>
-                        <trix-editor class="trix-content" input="input"></trix-editor>
+                        <trix-editor class="trix-content edit" input="input"></trix-editor>
                         <input id="input" ref={inputEl} type="hidden" name="content" value={text.__html}></input>
                     </form>
 
-                </div>
+                </article>
                 <button className="edit-button" onClick={handleSubmit}>Submit</button>
             </div>
         );

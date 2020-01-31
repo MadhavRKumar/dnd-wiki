@@ -28,8 +28,10 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
-	line-height: 1;
+  line-height: 1;
+  background: #fffbed;
 }
 ol, ul {
 	list-style: none;
@@ -47,20 +49,24 @@ table {
 	border-spacing: 0;
 }
 
-/* Elements */
-body {
-  font-size: 75%;
-}
+/*///////////////////////// END RESET /////////////////////////*/
 
+
+/* Elements */
+
+article {
+  margin: 0 6% 6% 6%;
+}
 trix-toolbar {
   overflow: auto;
 }
 
 /* Classes */
 
-.article {
-  margin: 0 15% 5% 15%;
+.article-container {
+  padding: 5% 0;
 }
+
 
 .edit-button {
   display: block;
@@ -95,6 +101,7 @@ trix-toolbar {
 .flex-container-centered {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .loader {
@@ -115,6 +122,7 @@ trix-toolbar {
 .logo {
   align-self: center;
   margin: 2%;
+  width: 350px;
 }
 
 .search {
@@ -125,7 +133,7 @@ trix-toolbar {
 .title {
   font-family: 'Rufina';
   font-size: 2.8em;
-  margin: 7.5% 33% 7.5% auto;
+  margin: 0 33% 7.5% auto;
   border-bottom: 1px solid #aaaaaa;
 }
 
@@ -133,11 +141,15 @@ trix-toolbar {
   font-family: 'Oxygen';
   font-size: 1em;
   line-height: 1.6;
-  padding-right: 2px;
+  padding-left: 2px;
 }
 
 .trix-content {
   font-family: 'Oxygen';
+}
+.trix-content.edit{
+  background: #fffcf2;
+  padding: 1em;
 }
 
 .trix-content > div > em {
@@ -158,16 +170,31 @@ trix-toolbar {
 /* Larger than mobile styling */
 @media screen and (min-width: 900px) {
   body {
-    font-size: 100%;
+    font-size: 110%;
+  }
+  article {
+    margin: 0 20% 7% 20%;
   }
 
   .title {
-    margin: 5% 33% 2.5% auto;
+    margin: 0 33% 5% auto;
   }
 
   .text {
     line-height: 1.75;
   }
+}
+
+@media screen and (min-width: 1500px) {
+  body {
+    font-size: 125%;
+  }
+  article {
+    margin: 0 30% 7% 30%;
+  }
+
+  
+  
 }
 
 

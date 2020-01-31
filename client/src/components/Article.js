@@ -14,12 +14,12 @@ function Article() {
    else {
     return (
         <div className="article-container">
-            <div className="article">
-                <div className="title">
+            <article className="article">
+                <header className="title">
                     <h1>{title}</h1>
-                </div>
-                <div className="text trix-content" dangerouslySetInnerHTML={text}></div>
-            </div>
+                </header>
+                <p className="text trix-content" dangerouslySetInnerHTML={text}></p>
+            </article>
             <Link className="edit-button" to={`/edit/${title}`}>
                 Edit Article
             </Link>
