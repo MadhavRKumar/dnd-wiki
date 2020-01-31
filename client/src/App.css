@@ -92,6 +92,11 @@ trix-toolbar {
   transform: scale(0.97);
 }
 
+.flex-container-centered {
+  display: flex;
+  flex-direction: column;
+}
+
 .loader {
   width: 30px;
   height: 30px;
@@ -106,6 +111,17 @@ trix-toolbar {
   text-align: center;
   font-family: 'Oxygen';
 }
+
+.logo {
+  align-self: center;
+  margin: 2%;
+}
+
+.search {
+  margin: 5% auto 5% auto;
+  display: block;
+}
+
 .title {
   font-family: 'Rufina';
   font-size: 2.8em;

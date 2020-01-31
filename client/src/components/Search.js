@@ -5,7 +5,7 @@ export default function Search(props) {
 
     return (
         <form>
-            <input type="search" placeholder="Search...">
+            <input type="search" placeholder="Search..." className="search">
             </input>
         </form>
     )
