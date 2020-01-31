@@ -29,10 +29,6 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 
-body {
-  line-height: 1;
-  background: #fffbed;
-}
 ol, ul {
 	list-style: none;
 }
@@ -48,25 +44,93 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+/*********************  END RESET  *********************/
 
-/*///////////////////////// END RESET /////////////////////////*/
 
-
-/* Elements */
-
-article {
-  margin: 0 6% 6% 6%;
-}
-trix-toolbar {
-  overflow: auto;
+/*********************  Generic Classes  *********************/
+body {
+  line-height: 1;
+  background: #fffbed;
 }
 
-/* Classes */
+.loading-container {
+  text-align: center;
+  font-family: 'Oxygen';
+}
+
+.loader {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 5px solid  #0ca13e;
+  border-top-color: white;
+  margin: 10% auto 5% auto;
+  animation: spin 1s infinite linear;
+}
+
+.flex-container-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo {
+  align-self: center;
+  margin: 2%;
+  width: 350px;
+}
+
+.search {
+  margin: 5% auto 5% auto;
+  display: block;
+}
 
 .article-container {
   padding: 5% 0;
 }
 
+article {
+  margin: 0 6% 6% 6%;
+}
+
+.title {
+  font-family: 'Rufina';
+  font-size: 2.8em;
+  margin: 0 33% 7.5% auto;
+  border-bottom: 1px solid #aaaaaa;
+}
+
+trix-toolbar {
+  overflow: auto;
+}
+.trix-content {
+  font-family: 'Oxygen';
+}
+.trix-content.edit{
+  background: #fffcf2;
+  padding: 1em;
+}
+
+.trix-content > h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+  font-family: 'Rufina';
+}
+
+.trix-content > div > em {
+  font-style: italic;
+}
+
+.trix-content > div > strong {
+  font-weight: bold;
+}
+
+.text {
+  font-family: 'Oxygen';
+  font-size: 1em;
+  line-height: 1.6;
+  padding-left: 2px;
+}
 
 .edit-button {
   display: block;
@@ -98,83 +162,21 @@ trix-toolbar {
   transform: scale(0.97);
 }
 
-.flex-container-centered {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.loader {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 5px solid  #0ca13e;
-  border-top-color: white;
-  margin: 10% auto 5% auto;
-  animation: spin 1s infinite linear;
-}
-
-.loading-container {
-  text-align: center;
-  font-family: 'Oxygen';
-}
-
-.logo {
-  align-self: center;
-  margin: 2%;
-  width: 350px;
-}
-
-.search {
-  margin: 5% auto 5% auto;
-  display: block;
-}
-
-.title {
-  font-family: 'Rufina';
-  font-size: 2.8em;
-  margin: 0 33% 7.5% auto;
-  border-bottom: 1px solid #aaaaaa;
-}
-
-.text {
-  font-family: 'Oxygen';
-  font-size: 1em;
-  line-height: 1.6;
-  padding-left: 2px;
-}
-
-.trix-content {
-  font-family: 'Oxygen';
-}
-.trix-content.edit{
-  background: #fffcf2;
-  padding: 1em;
-}
-
-.trix-content > div > em {
-  font-style: italic;
-}
-
-.trix-content > div > strong {
-  font-weight: bold;
-}
-
-.trix-content > h1 {
-  font-size: 1.5em;
-  font-weight: bold;
-  font-family: 'Rufina';
-}
-
 
 /* Larger than mobile styling */
 @media screen and (min-width: 900px) {
   body {
     font-size: 110%;
   }
+
+  .logo {
+    width: auto;
+  }
+
   article {
     margin: 0 20% 7% 20%;
   }
+
 
   .title {
     margin: 0 33% 5% auto;
@@ -192,9 +194,6 @@ trix-toolbar {
   article {
     margin: 0 30% 7% 30%;
   }
-
-  
-  
 }
 
 
