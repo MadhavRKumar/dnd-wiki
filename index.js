@@ -14,58 +14,49 @@ app.use(
 app.use(cors());
 
 const getArticle = (req, res) => {
-    
-    pool.query( 'SELECT text FROM text WHERE id = (SELECT rev_text_id FROM revisions WHERE id = (SELECT page_latest FROM pages WHERE lower(page_title) = lower($1)));', [req.params.pageTitle],
-        
+
+    pool.query('SELECT text FROM text WHERE id = (SELECT rev_text_id FROM revisions WHERE id = (SELECT page_latest FROM pages WHERE lower(page_title) = lower($1)));', [req.params.pageTitle],
+
         (err, result) => {
-            if(err) {
+            if (err) {
                 return console.error('Error executing query', err.stack)
             }
-            if(result.rows.length > 0) {
-                res.status(200).json(result.rows[0])  
+            if (result.rows.length > 0) {
+                res.status(200).json(result.rows[0])
             }
             else {
                 res.status(200).json({});
             }
-         })
+        })
 }
 
-const createArticle = (req, res) => {
+const putArticle = (req, res) => {
     const pageTitle = req.params.pageTitle;
     pool.query('SELECT id FROM pages WHERE lower(page_title) = lower($1)', [pageTitle],
         (err, result) => {
-            if(err) {
+            if (err) {
                 return console.error('Error executing query', err.stack)
             }
-            if(result.rows.length > 0) {
-                res.status(400).send(`'${pageTitle}' already exists!`);
-            }
             else {
-                postArticle(req, res, true).catch(err =>  {
+                const isNewArticle = result.rows.length == 0;
+                handleArticle(req, res, isNewArticle).catch(err => {
                     console.error('Error executing query', err.stack)
                 });
             }
+
         }
-    )
-
-
-}
-
-const editArticle = (req, res) => {
-    postArticle(req, res, false).catch(err => {
-        console.error('Error executing query', err.stack)
-    });    
+    );
 }
 
 
-async function postArticle(req, res, isNewArticle) {
+async function handleArticle(req, res, isNewArticle) {
     const client = await pool.connect();
     const { text } = req.body;
     const pageTitle = req.params.pageTitle;
 
     try {
         await client.query('BEGIN');
-        
+
         const pageQuery = isNewArticle ? 'INSERT INTO pages (page_title) VALUES ($1) RETURNING id' : 'SELECT id FROM pages WHERE lower(page_title) = lower($1)';
 
         const pageRes = await client.query(pageQuery, [pageTitle]);
@@ -83,11 +74,11 @@ async function postArticle(req, res, isNewArticle) {
         await client.query('UPDATE pages SET page_latest = $1 WHERE id = $2', updateRevValues);
         await client.query('COMMIT');
 
-        if(isNewArticle) {
+        if (isNewArticle) {
             res.status(201).send(`Article '${pageTitle}' successfully created`);
         }
         else {
-           res.status(200).send(`Article '${pageTitle}' successfully edited`);
+            res.status(200).send(`Article '${pageTitle}' successfully edited`);
         }
 
     } catch (err) {
@@ -100,13 +91,10 @@ async function postArticle(req, res, isNewArticle) {
         client.release();
 
     }
-
-
 }
 
 app.get('/:pageTitle', getArticle);
-app.post('/:pageTitle', createArticle);
-app.put('/:pageTitle', editArticle);
+app.put('/:pageTitle', putArticle);
 
 app.listen(process.env.PORT || 3002, () => {
     console.log(`App running on port ${process.env.PORT || 3002}.`)
