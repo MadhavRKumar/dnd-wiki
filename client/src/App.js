@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Article from './components/Article';
+import Article from './components/ViewArticle';
 import {
   BrowserRouter as Router,
   Switch,

@@ -85,12 +85,9 @@ body {
   display: block;
 }
 
-.article-container {
-  padding: 5% 0;
-}
 
 article {
-  margin: 0 6% 6% 6%;
+  margin: 6% 6% 6% 6%;
 }
 
 .title {
@@ -174,7 +171,7 @@ trix-toolbar {
   }
 
   article {
-    margin: 0 20% 7% 20%;
+    margin: 5% 20% 7% 20%;
   }
 
 
@@ -192,7 +189,11 @@ trix-toolbar {
     font-size: 125%;
   }
   article {
-    margin: 0 30% 7% 30%;
+    margin: 3% 30% 3% 30%;
+  }
+
+  .edit-button {
+    margin: 3% auto 5% auto;
   }
 }
 
