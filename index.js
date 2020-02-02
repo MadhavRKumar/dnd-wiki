@@ -21,7 +21,12 @@ const getArticle = (req, res) => {
             if(err) {
                 return console.error('Error executing query', err.stack)
             }
-            res.status(200).json(result.rows[0])  
+            if(result.rows.length > 0) {
+                res.status(200).json(result.rows[0])  
+            }
+            else {
+                res.status(200).json({});
+            }
          })
 }
 
