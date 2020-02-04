@@ -50,7 +50,7 @@ table {
 /*********************  Generic Classes  *********************/
 body {
   line-height: 1;
-  background: #fffbed;
+  background: #F4F9F7;
 }
 
 .loading-container {
@@ -87,7 +87,15 @@ body {
 
 
 article {
-  margin: 6% 6% 6% 6%;
+  margin: 3% 3% 0% 3%;
+  background: #E5F3ED;
+  padding: 3% 3% 15% 3%;
+  box-shadow: 0px 0px 8px 0px #c9cccb;
+  border-radius: 5px;
+}
+
+h1 {
+  color: #0ca13e;
 }
 
 .title {
@@ -104,7 +112,7 @@ trix-toolbar {
   font-family: 'Oxygen';
 }
 .trix-content.edit{
-  background: #fffcf2;
+  background: #F4F9F7;
   padding: 1em;
 }
 
@@ -112,6 +120,8 @@ trix-toolbar {
   font-size: 1.5em;
   font-weight: bold;
   font-family: 'Rufina';
+  margin: 0 33% 2% auto;
+  border-bottom: 1px solid #aaaaaa;
 }
 
 .trix-content > div > em {
@@ -133,7 +143,7 @@ trix-toolbar {
   display: block;
   border: none;
   padding: 1rem 2rem;
-  margin: 5% auto;
+  margin: 0 auto;
   width: 150px;
   text-decoration: none;
   background: #0ca13e;
@@ -143,6 +153,7 @@ trix-toolbar {
   cursor: pointer;
   border-radius: 5px;
   text-align: center;
+  transform: translateY(-50%);
   transition: background 125ms ease-in-out
               transform 75ms ease-in-out;
   -webkit-appearance: none;
@@ -156,7 +167,7 @@ trix-toolbar {
 }
 
 .edit-button:focus {
-  transform: scale(0.97);
+  transform: translateY(-50%) scale(0.97);
 }
 
 
@@ -171,7 +182,8 @@ trix-toolbar {
   }
 
   article {
-    margin: 5% 20% 7% 20%;
+    margin: 5% 20% 0% 20%;
+    padding: 3% 3% 6% 3%;
   }
 
 
@@ -189,11 +201,8 @@ trix-toolbar {
     font-size: 125%;
   }
   article {
-    margin: 3% 30% 3% 30%;
-  }
-
-  .edit-button {
-    margin: 3% auto 5% auto;
+    margin: 3% 25% 0% 25%;
+    padding: 3% 5% 4% 5%;
   }
 }
 
