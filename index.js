@@ -99,22 +99,22 @@ async function handleArticle(req, res, isNewArticle) {
 
 const searchArticle = (req, res) => {
     const query = req.query.query;
-    pool.query('SELECT text FROM text WHERE id = (SELECT rev_text_id FROM revisions WHERE id = (SELECT page_latest FROM pages WHERE lower(page_title) = lower($1)));', [query],
+    pool.query('SELECT page_title, text FROM pages JOIN (SELECT revisions.id,text FROM revisions join text ON revisions.rev_text_id = text.id) AS t ON pages.page_latest = t.id WHERE lower(page_title) = lower($1);', [query],
     (err, result) => {
             if (err) {
-                return console.error('Error executing query', err.stack)
+                return console.error('Error executing query', err.stack);
             }
             else if (result.rows.length == 1) {
-                res.status(200).json(result.rows[0])
+                res.status(200).json(result.rows);
             }
             else {
                 pool.query('SELECT page_title, text FROM pages JOIN (SELECT revisions.id,text FROM revisions join text ON revisions.rev_text_id = text.id) AS t ON pages.page_latest = t.id WHERE search_vector @@ to_tsquery($1);', [query],
                 (err, result) => {
                     if (err) {
-                        return console.error('Error executing query', err.stack)
+                        return console.error('Error executing query', err.stack);
                     }
                     else if (result.rows.length > 0) {
-                        res.status(200).json(result.rows)
+                        res.status(200).json(result.rows);
                     }
                     else {
                         res.status(200).json({});
