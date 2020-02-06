@@ -98,7 +98,7 @@ async function handleArticle(req, res, isNewArticle) {
 }
 
 const searchArticle = (req, res) => {
-    const query = req.body.query;
+    const query = req.query.query;
     pool.query('SELECT text FROM text WHERE id = (SELECT rev_text_id FROM revisions WHERE id = (SELECT page_latest FROM pages WHERE lower(page_title) = lower($1)));', [query],
     (err, result) => {
             if (err) {
