@@ -69,9 +69,13 @@ async function handleArticle(req, res, isNewArticle) {
         const revRes = await client.query('INSERT INTO revisions (rev_page_id, rev_text_id) VALUES ($1, $2) RETURNING id', insertRevValues);
 
         const revID = revRes.rows[0].id;
-        const updateRevValues = [revID, pageID];
+        const search_vector = [
+            String(pageTitle),
+            String(text)
+        ];
+        const updateRevValues = [revID, search_vector, pageID];
 
-        await client.query('UPDATE pages SET page_latest = $1 WHERE id = $2', updateRevValues);
+        await client.query('UPDATE pages SET page_latest = $1, search_vector = to_tsvector($2) WHERE id = $3', updateRevValues);
         await client.query('COMMIT');
 
         if (isNewArticle) {
@@ -93,7 +97,35 @@ async function handleArticle(req, res, isNewArticle) {
     }
 }
 
-app.get('/:pageTitle', getArticle);
+const searchArticle = (req, res) => {
+    const query = req.body.query;
+    pool.query('SELECT text FROM text WHERE id = (SELECT rev_text_id FROM revisions WHERE id = (SELECT page_latest FROM pages WHERE lower(page_title) = lower($1)));', [query],
+    (err, result) => {
+            if (err) {
+                return console.error('Error executing query', err.stack)
+            }
+            else if (result.rows.length == 1) {
+                res.status(200).json(result.rows[0])
+            }
+            else {
+                pool.query('SELECT page_title, text FROM pages JOIN (SELECT revisions.id,text FROM revisions join text ON revisions.rev_text_id = text.id) AS t ON pages.page_latest = t.id WHERE search_vector @@ to_tsquery($1);', [query],
+                (err, result) => {
+                    if (err) {
+                        return console.error('Error executing query', err.stack)
+                    }
+                    else if (result.rows.length > 0) {
+                        res.status(200).json(result.rows)
+                    }
+                    else {
+                        res.status(200).json({});
+                    }
+                })
+            }
+    });
+}
+
+app.get('/article/:pageTitle', getArticle);
+app.get('/search', searchArticle);
 app.put('/:pageTitle', putArticle);
 
 app.listen(process.env.PORT || 3002, () => {

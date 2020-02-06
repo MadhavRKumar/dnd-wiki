@@ -8,7 +8,7 @@ function parseTitle(pageTitle) {
 }
 
 let callAPI = async (pageTitle) => {
-    const response = await fetch(`/${pageTitle}`);
+    const response = await fetch(`/article/${pageTitle}`);
     const body = await response.json();
     if (response.status !== 200) 
     {
