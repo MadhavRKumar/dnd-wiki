@@ -72,6 +72,8 @@ body {
   background: url(./background.png);
 }
 
+
+/******************** LOADING *********************************/
 .loading-container {
   text-align: center;
   font-family: 'Oxygen';
@@ -87,6 +89,7 @@ body {
   animation: spin 1s infinite linear;
 }
 
+/******************** HOME PAGE *********************************/
 .flex-container-centered {
   display: flex;
   flex-direction: column;
@@ -100,6 +103,7 @@ body {
   background: radial-gradient(ellipse at center, rgb(244, 249, 247) 0%, rgb(244, 249, 247) 50%, rgba(244,249,247,0) 100%);
 }
 
+/******************** SEARCH BAR *********************************/
 .search {
   margin: 5% auto 5% auto;
   display: block;
@@ -115,6 +119,7 @@ body {
   border: 0;
 }
 
+/******************** SEARCH RESULTS *********************************/
 .result-list {
   text-align: center;
 }
@@ -126,7 +131,7 @@ body {
   padding: 3.5%;
 }
 
-
+/******************** ARTICLE *********************************/
 article {
   margin: 4% 5% 0% 5%;
   padding: 3% 3% 15% 3%;
@@ -186,6 +191,7 @@ trix-toolbar {
   color: black;
 }
 
+/******************** BUTTONS *********************************/
 .edit-button {
   display: block;
   border: none;
@@ -240,11 +246,11 @@ trix-toolbar {
     line-height: 1;
     font-size: 1.25em;
   }
+
   article {
     margin: 5% 20% 0% 20%;
     padding: 3% 3% 6% 3%;
   }
-
 
   .title {
     margin: 0 33% 5% auto;
