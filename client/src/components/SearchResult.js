@@ -9,8 +9,8 @@ export default function SearchResult() {
     const location = useLocation();
     let isLoading = useLoading();
 
-    const res = location.state.result;
-    const list = res.map((obj) => <Result key={obj.page_title} title={obj.page_title} text={obj.text} />)
+    const res = location.state ? location.state.result : false;
+    const list = (res && res.length!==0) ? res.map((obj) => <Result key={obj.page_title} title={obj.page_title} text={obj.text} />) : <NoResult/>;
 
     if(isLoading) {
         return <Loader/>;
@@ -39,5 +39,13 @@ function Result(props) {
             <p className='text'>{truncText}</p>
         </Link>
         </li>
-)
+    )
+}
+
+function NoResult() {
+    return (
+        <li className='result'>
+            <p className='text'>Sorry, no results were found!</p>
+        </li>
+    )
 }
