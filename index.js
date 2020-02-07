@@ -108,7 +108,7 @@ const searchArticle = (req, res) => {
                 res.status(200).json(result.rows);
             }
             else {
-                pool.query('SELECT page_title, text FROM pages JOIN (SELECT revisions.id,text FROM revisions join text ON revisions.rev_text_id = text.id) AS t ON pages.page_latest = t.id WHERE search_vector @@ to_tsquery($1);', [query],
+                pool.query('SELECT page_title, text FROM pages JOIN (SELECT revisions.id,text FROM revisions join text ON revisions.rev_text_id = text.id) AS t ON pages.page_latest = t.id WHERE search_vector @@ plainto_tsquery($1);', [query],
                 (err, result) => {
                     if (err) {
                         return console.error('Error executing query', err.stack);
