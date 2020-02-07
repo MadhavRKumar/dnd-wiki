@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import { useHistory } from 'react-router-dom';
 
-export default function Search(props) {
+export default function Search() {
     const input = useRef(null);
     const history = useHistory();
 
@@ -21,6 +21,13 @@ export default function Search(props) {
         .then(result => {
             if(result.length === 1) {
                 history.push('/article/' + result[0].page_title);
+            }
+            else {
+                const location = {
+                    pathname: '/search',
+                    state: { result }
+                }
+                history.push(location);
             }
         })
         .catch(error => console.error('Error: ', error));

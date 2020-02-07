@@ -8,6 +8,7 @@ import {
 import './App.css';
 import EditArticle from './components/EditArticle';
 import Home from './components/Home';
+import SearchResult from './components/SearchResult';
 
 class App extends Component {
 
@@ -21,6 +22,9 @@ class App extends Component {
           </Route>
           <Route path='/edit/:pageTitle'>
             <EditArticle/>
+          </Route>
+          <Route path='/search'>
+            <SearchResult/>  
           </Route>
           <Route path='/'>
               <Home/>

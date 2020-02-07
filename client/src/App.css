@@ -44,6 +44,13 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+a {
+  text-decoration: none;
+  display: block;
+  width:100%;
+  height: 100%;
+}
 /*********************  END RESET  *********************/
 
 
@@ -85,17 +92,32 @@ body {
   display: block;
 }
 
+.result-list {
+  text-align: center;
+}
+
+.result {
+  display: inline-block;
+  text-align: left;
+  margin: 4% 5%;
+  padding: 3.5%;
+}
+
 
 article {
   margin: 3% 3% 0% 3%;
-  background: #E5F3ED;
   padding: 3% 3% 15% 3%;
+}
+
+.result, article {
+  background: #E5F3ED;
   box-shadow: 0px 0px 8px 0px #c9cccb;
   border-radius: 20px;
 }
 
 h1 {
   color: #0ca13e;
+  font-weight: bold;
 }
 
 .title {
@@ -116,7 +138,8 @@ trix-toolbar {
   padding: 1em;
 }
 
-.trix-content > h1 {
+.trix-content > h1, .result h2 {
+  color: #0ca13e;
   font-size: 1.5em;
   font-weight: bold;
   font-family: 'Rufina';
@@ -137,6 +160,7 @@ trix-toolbar {
   font-size: 1em;
   line-height: 1.6;
   padding-left: 2px;
+  color: black;
 }
 
 .edit-button {
