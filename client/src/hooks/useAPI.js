@@ -1,11 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
-function parseTitle(pageTitle) {
-    let str = pageTitle.replace('_', ' ');
-    let cap = str.charAt(0).toUpperCase();
-    return cap + str.substring(1);
-}
+import capitalize from '../util/capitalize';
 
 let callAPI = async (pageTitle) => {
     const response = await fetch(`/article/${pageTitle}`);
@@ -20,7 +15,7 @@ let callAPI = async (pageTitle) => {
 
 const useAPI = () => {
     let { pageTitle } = useParams();
-    let title = parseTitle(pageTitle);
+    let title = capitalize(pageTitle);
     let [text, setText] = useState({__html:''});
     let [isLoading, setLoading] = useState(true);
 
