@@ -57,7 +57,7 @@ a {
 /*********************  Generic Classes  *********************/
 body {
   line-height: 1;
-  background: #F4F9F7;
+  background: url(./background.png);
 }
 
 .loading-container {
@@ -232,7 +232,7 @@ trix-toolbar {
   .result {
     margin: 1.5% 25% 1.5% 25%;
   }
-  
+
   article {
     margin: 3% 25% 0% 25%;
     padding: 3% 5% 4% 5%;
