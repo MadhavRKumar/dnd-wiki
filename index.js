@@ -13,6 +13,10 @@ app.use(
 );
 app.use(cors());
 
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'client/build')));
+}
+
 const getArticle = (req, res) => {
 
     pool.query('SELECT text FROM text WHERE id = (SELECT rev_text_id FROM revisions WHERE id = (SELECT page_latest FROM pages WHERE lower(page_title) = lower($1)));', [req.params.pageTitle],
