@@ -192,7 +192,7 @@ trix-toolbar {
 }
 
 /******************** BUTTONS *********************************/
-.edit-button {
+.edit-button, .search-button {
   display: block;
   border: none;
   padding: 1rem 2rem;
@@ -214,13 +214,18 @@ trix-toolbar {
   text-decoration: none;
 }
 
-.edit-button:hover,
-.edit-button:focus {
+.edit-button:hover,.search-button:hover
+.edit-button:focus, .search-button:focus {
   background: #097e30;
 }
 
-.edit-button:focus {
+.edit-button:focus, .search-button:focus {
   transform: translateY(-50%) scale(0.97);
+}
+
+.search-button {
+  background-image: url(./search-icon.png);
+  background-repeat: no-repeat;
 }
 
 

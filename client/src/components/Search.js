@@ -37,6 +37,7 @@ export default function Search() {
         <form onSubmit={handleSubmit}>
             <input ref={input} type="search" placeholder="Search..." className="search" aria-label="Search for an article">
             </input>
+            <button className='search-button'></button>
         </form>
     )
 }
