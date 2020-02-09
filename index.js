@@ -132,6 +132,12 @@ app.get('/article/:pageTitle', getArticle);
 app.get('/search', searchArticle);
 app.put('/:pageTitle', putArticle);
 
+if(process.env.NODE_ENV === 'production') {
+    app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  });
+}
+
 app.listen(process.env.PORT || 3002, () => {
     console.log(`App running on port ${process.env.PORT || 3002}.`)
 });
