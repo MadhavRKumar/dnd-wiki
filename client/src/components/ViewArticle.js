@@ -5,6 +5,7 @@ import useAPI from '../hooks/useAPI';
 import Loader from './Loader';
 import Article from './Article';
 import ArticleContent from './ArticleContent';
+import Title from './Title';
 
 
 export default function ViewArticle() {
@@ -15,7 +16,8 @@ export default function ViewArticle() {
    else {
     return (
         <>
-            <Article title={title}>
+            <Article>
+                <Title title={title}/>
                 <ArticleContent text={text}/>
             </Article>
             <Link className="edit-button" to={`/edit/${title}`}>

@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import Loader from './Loader';
 import Editor from './Editor';
 import Article from './Article';
+import Title from './Title';
 
 export default function EditArticle() {
 
@@ -44,7 +45,8 @@ export default function EditArticle() {
     else {
         return (
             <>
-                <Article title={title}>
+                <Article>
+                    <Title title={title}/>
                     <Editor input={inputEl} text={text} />
                 </Article>
                 <button className="edit-button" onClick={handleSubmit}>Submit</button>
