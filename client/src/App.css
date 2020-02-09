@@ -46,7 +46,6 @@ table {
 }
 
 a {
-  text-decoration: none;
   display: block;
   width:100%;
   height: 100%;
@@ -87,6 +86,27 @@ body {
   border-top-color: white;
   margin: 10% auto 5% auto;
   animation: spin 1s infinite linear;
+}
+
+/******************** NAVIGATION *********************************/
+.navbar {
+  margin: auto auto 10% auto;
+  padding: 10px;
+  background-color: #E5F3ED;
+  font-family: 'Oxygen';
+  font-size: 0.9em;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0px 0px 8px 0px #c9cccb;
+}
+
+.main-nav li {
+  text-align: center;
+  margin: 3% auto;
+}
+
+.nav-link, .nav-link:visited{
+  color: #0ca13e;
+  font-weight: bold;
 }
 
 /******************** HOME PAGE *********************************/
@@ -131,6 +151,10 @@ body {
   padding: 3.5%;
 }
 
+.result a {
+  text-decoration: none;
+}
+
 /******************** ARTICLE *********************************/
 article {
   margin: 4% 5% 0% 5%;
@@ -151,11 +175,16 @@ h1, .title-input {
 .title, .title-input {
   font-family: 'Rufina';
   font-size: 2.8em;
-  margin: 0 33% 7.5% auto;
 }
 
 .title {
   border-bottom: 1px solid #aaaaaa;
+  margin: 0 33% 7.5% auto;
+}
+
+.title-input {
+  width: 95%;
+  margin: 0 0 7.5% auto;
 }
 
 
@@ -238,6 +267,10 @@ trix-toolbar {
     width: 400px;
   }
 
+  .navbar {
+    font-size: 1.1em;
+    margin: auto auto 7.5% auto;
+  }
 
   .result {
     margin: 2.5% 20% 2.5% 20%;
@@ -268,6 +301,11 @@ trix-toolbar {
 @media screen and (min-width: 1500px) {
   body {
     font-size: 125%;
+  }
+
+  .navbar {
+    font-size: 1.1em;
+    margin: auto auto 5% auto;
   }
 
   .logo {
