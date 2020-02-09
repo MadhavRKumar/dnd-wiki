@@ -23,7 +23,7 @@ export default function CreateArticle() {
                 redirect: 'follow'
             };
     
-            fetch('/' + title, requestOptions)
+            fetch('/api/' + title, requestOptions)
                 .then(response => response.text())
                 .then(result => {
                     alert(result);

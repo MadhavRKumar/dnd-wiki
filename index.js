@@ -128,9 +128,9 @@ const searchArticle = (req, res) => {
     });
 }
 
-app.get('/article/:pageTitle', getArticle);
-app.get('/search', searchArticle);
-app.put('/:pageTitle', putArticle);
+app.get('/api/article/:pageTitle', getArticle);
+app.get('/api/search', searchArticle);
+app.put('/api/:pageTitle', putArticle);
 
 if(process.env.NODE_ENV === 'production') {
     app.get('*', (req, res) => {

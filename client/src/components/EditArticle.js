@@ -28,7 +28,7 @@ export default function EditArticle() {
             redirect: 'follow'
         };
 
-        fetch('/' + pageTitle, requestOptions)
+        fetch('/api/' + pageTitle, requestOptions)
             .then(response => response.text())
             .then(result => {
                 alert(result);

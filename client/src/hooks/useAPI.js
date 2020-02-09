@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import capitalize from '../util/capitalize';
 
 let callAPI = async (pageTitle) => {
-    const response = await fetch(`/article/${pageTitle}`);
+    const response = await fetch(`/api/article/${pageTitle}`);
     const body = await response.json();
     if (response.status !== 200) 
     {

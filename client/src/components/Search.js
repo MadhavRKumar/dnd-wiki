@@ -16,7 +16,7 @@ export default function Search() {
             redirect: 'follow'
         };
 
-        fetch('/search?query=' + input.current.value, requestOptions)
+        fetch('/api/search?query=' + input.current.value, requestOptions)
         .then(response => response.json())
         .then(result => {
             if(result.length === 1) {
