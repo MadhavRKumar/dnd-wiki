@@ -11,7 +11,7 @@ import Home from './components/Home';
 import SearchResult from './components/SearchResult';
 import CreateArticle from './components/CreateArticle';
 import NavBar from './components/NavBar';
-
+import Search from './components/Search';
 class App extends Component {
 
 
@@ -21,19 +21,22 @@ class App extends Component {
         <Switch>
           <Route path='/article/:pageTitle'>
             <NavBar/>
+            <Search />
             <Article />
           </Route>
           <Route path='/edit/:pageTitle'>
-            <EditArticle/>
+            <Search />
+            <EditArticle />
           </Route>
           <Route path='/search'>
-            <SearchResult/>  
+            <Search />
+            <SearchResult />
           </Route>
           <Route path='/create'>
-            <CreateArticle/>
+            <CreateArticle />
           </Route>
           <Route path='/'>
-              <Home/>
+            <Home />
           </Route>
         </Switch>
       </Router>
