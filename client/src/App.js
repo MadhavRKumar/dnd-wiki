@@ -12,7 +12,6 @@ import SearchResult from './components/SearchResult';
 import CreateArticle from './components/CreateArticle';
 import NavBar from './components/NavBar';
 import Search from './components/Search';
-import NavBar from './components/NavBar';
 
 class App extends Component {
 
