@@ -89,6 +89,26 @@ body {
   animation: spin 1s infinite linear;
 }
 
+/******************** NAVIGATION *********************************/
+.navbar {
+  padding: 10px;
+  background-color: #E5F3ED;
+  font-family: 'Oxygen';
+  font-size: 0.9em;
+}
+
+.main-nav li {
+  text-align: center;
+  margin: 3% auto;
+  display: none;
+}
+
+.nav-link, .nav-link:visited{
+  text-decoration: none;
+  color: #0ca13e;
+  font-weight: bold;
+}
+
 /******************** HOME PAGE *********************************/
 .flex-container-centered {
   display: flex;

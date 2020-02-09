@@ -10,6 +10,7 @@ import EditArticle from './components/EditArticle';
 import Home from './components/Home';
 import SearchResult from './components/SearchResult';
 import CreateArticle from './components/CreateArticle';
+import NavBar from './components/NavBar';
 
 class App extends Component {
 
@@ -19,6 +20,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route path='/article/:pageTitle'>
+            <NavBar/>
             <Article />
           </Route>
           <Route path='/edit/:pageTitle'>
