@@ -22,16 +22,17 @@ class App extends Component {
       <Router>
         <Switch>
           <Route path='/article/:pageTitle'>
-            <NavBar/>
+            <NavBar />
             <Search />
-            <NavBar/>
             <Article />
           </Route>
           <Route path='/edit/:pageTitle'>
+            <NavBar />
             <Search />
             <EditArticle />
           </Route>
           <Route path='/search'>
+            <NavBar />
             <Search />
             <SearchResult />
           </Route>
