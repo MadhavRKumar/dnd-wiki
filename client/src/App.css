@@ -143,17 +143,21 @@ article {
   border-radius: 20px;
 }
 
-h1 {
+h1, .title-input {
   color: #0ca13e;
   font-weight: bold;
 }
 
-.title {
+.title, .title-input {
   font-family: 'Rufina';
   font-size: 2.8em;
   margin: 0 33% 7.5% auto;
+}
+
+.title {
   border-bottom: 1px solid #aaaaaa;
 }
+
 
 trix-toolbar {
   overflow: auto;
