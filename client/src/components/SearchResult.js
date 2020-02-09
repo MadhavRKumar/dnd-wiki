@@ -10,7 +10,9 @@ export default function SearchResult() {
     let isLoading = useLoading();
 
     const res = location.state ? location.state.result : false;
-    const list = (res && res.length!==0) ? res.map((obj) => <Result key={obj.page_title} title={obj.page_title} text={obj.text} />) : <NoResult/>;
+    const query = location.state ? location.state.query : false;
+
+    const list = (res && res.length!==0) ? res.map((obj) => <Result key={obj.page_title} title={obj.page_title} text={obj.text} />) : <NoResult query={query}/>;
 
     if(isLoading) {
         return <Loader/>;
@@ -42,10 +44,11 @@ function Result(props) {
     )
 }
 
-function NoResult() {
+function NoResult({query}) {
+    let text = query ? `No results for '${query}'` : "Search for an Article";
     return (
         <li className='result'>
-            <p className='text'>Sorry, no results were found!</p>
+            <p className='text'>{text}</p>
         </li>
     )
 }

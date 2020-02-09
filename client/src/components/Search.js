@@ -25,7 +25,7 @@ export default function Search() {
             else {
                 const location = {
                     pathname: '/search',
-                    state: { result }
+                    state: { result , query: input.current.value }
                 }
                 history.push(location);
             }
