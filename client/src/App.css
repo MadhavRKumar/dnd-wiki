@@ -104,9 +104,16 @@ body {
   margin: 3% auto;
 }
 
-.nav-link, .nav-link:visited{
+.create-link, .create-link:visited, .nav-link, .nav-link:visited{
   color: #0ca13e;
   font-weight: bold;
+}
+
+.create-link {
+  display: block;
+  width: auto;
+  margin: 5% auto;
+  font-family: 'Oxygen';
 }
 
 /******************** HOME PAGE *********************************/
@@ -306,6 +313,10 @@ trix-toolbar {
   .navbar {
     font-size: 1.1em;
     margin: auto auto 5% auto;
+  }
+
+  .create-link {
+    margin: 2% auto;
   }
 
   .logo {
