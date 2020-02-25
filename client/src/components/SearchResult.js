@@ -29,12 +29,12 @@ export default function SearchResult() {
 function Result(props) {
     const { title, text } = props;
     const capTitle = capitalize(title);
-    const truncText = text.split(' ').slice(0, 20).join(' ');
+    const truncText = {__html:text.split(' ').slice(0, 20).join(' ')};
     return (
         <li className='result'>
             <Link to={'/article/' + title}>
                 <h2>{capTitle}</h2>
-                <p className='text'>{truncText}</p>
+                <p className='text trix-content' dangerouslySetInnerHTML={truncText}></p>
             </Link>
         </li>
     );
