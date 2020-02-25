@@ -104,7 +104,7 @@ body {
   margin: 3% auto;
 }
 
-.create-link, .create-link:visited, .nav-link, .nav-link:visited{
+.create-link, .create-link:visited, .nav-link, .nav-link:visited, .trix-content a{
   color: #0ca13e;
   font-weight: bold;
 }
@@ -194,13 +194,14 @@ h1, .title-input {
   margin: 0 0 7.5% auto;
 }
 
-
 trix-toolbar {
   overflow: auto;
 }
+
 .trix-content {
   font-family: 'Oxygen';
 }
+
 .trix-content.edit{
   background: #F4F9F7;
   padding: 1em;
@@ -221,6 +222,10 @@ trix-toolbar {
 
 .trix-content > div > strong {
   font-weight: bold;
+}
+
+.trix-content a {
+  display: inline;
 }
 
 .text {
