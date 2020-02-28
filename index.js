@@ -13,16 +13,17 @@ app.use(
 );
 app.use(cors());
 
-if(process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'client/build')));
-    app.use(forceSSL);
-}
-
 const forceSSL = function (req, res, next) {
     if(req.heaers['x-forwarded-proto'] !== 'https') {
         return res.redirect(['https://', req.get('Host'), req.url].join(''));
     }
     return next();
+}
+
+
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'client/build')));
+    app.use(forceSSL);
 }
 
 const getArticle = (req, res) => {
