@@ -6,31 +6,8 @@ export default function Search() {
     const history = useHistory();
 
     const handleSubmit = (event) => {
-        event.preventDefault();
-        var myHeaders = new Headers();
-        myHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
-
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
-
-        fetch('/api/search?query=' + input.current.value, requestOptions)
-        .then(response => response.json())
-        .then(result => {
-            if(result.length === 1) {
-                history.push('/article/' + result[0].page_title);
-            }
-            else {
-                const location = {
-                    pathname: '/search',
-                    state: { result , query: input.current.value }
-                }
-                history.push(location);
-            }
-        })
-        .catch(error => console.error('Error: ', error));
+		event.preventDefault();
+		history.push('/search/'+input.current.value);
     }
 
     return (

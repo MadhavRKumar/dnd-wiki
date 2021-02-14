@@ -1,15 +1,16 @@
 import React from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useParams } from 'react-router-dom';
 import capitalize from '../util/capitalize';
 import useLoading from '../hooks/useLoading';
+import useSearch from '../hooks/useSearch';
 import Loader from './Loader';
+
 
 export default function SearchResult() {
     const location = useLocation();
     let isLoading = useLoading();
-
-    const res = location.state ? location.state.result : false;
-    const query = location.state ? location.state.query : false;
+	let { query } = useParams();
+	let res = useSearch(query);
 
     const list = (res && res.length !== 0) ? res.map((obj) => <Result key={obj.page_title} title={obj.page_title} text={obj.text} />) : <NoResult query={query} />;
 
