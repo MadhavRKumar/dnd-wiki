@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation, Link, useParams } from 'react-router-dom';
 import capitalize from '../util/capitalize';
 import useLoading from '../hooks/useLoading';
@@ -7,23 +7,31 @@ import Loader from './Loader';
 
 
 export default function SearchResult() {
-    const location = useLocation();
     let isLoading = useLoading();
 	let { query } = useParams();
 	let res = useSearch(query);
-
-    const list = (res && res.length !== 0) ? res.map((obj) => <Result key={obj.page_title} title={obj.page_title} text={obj.text} />) : <NoResult query={query} />;
 
     if (isLoading) {
         return <Loader />;
     }
     else {
-        return (
-            <ul className='result-list'>
-                {list}
-            </ul>
-        );
+        return <ResultList query={query} results={res}/>;
     }
+
+}
+
+
+function ResultList(props) {
+	const { results, query } = props;
+
+    const list = (results && results.length !== 0) ? results.map((obj) => <Result key={obj.page_title} title={obj.page_title} text={obj.text} />) : <NoResult query={query} />;
+
+
+	return (
+		<ul className='result-list' >
+			{list}
+		</ul>
+	);
 
 }
 
