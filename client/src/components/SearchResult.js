@@ -24,8 +24,12 @@ export default function SearchResult() {
 function ResultList(props) {
 	const { results, query } = props;
 
-    const list = (results && results.length !== 0) ? results.map((obj) => <Result key={obj.page_title} title={obj.page_title} text={obj.text} />) : <NoResult query={query} />;
-
+	let list;
+	if(results.length !== 0) {
+		list = results.map((obj) => <Result key={obj.page_title} title={obj.page_title} text={obj.text} />) 
+	} else {
+		list = <NoResult query={query} />;
+	}
 
 	return (
 		<ul className='result-list' >
