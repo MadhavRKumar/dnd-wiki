@@ -7,7 +7,7 @@ export default function Search() {
 
     const handleSubmit = (event) => {
 		event.preventDefault();
-		history.push('/search/'+input.current.value);
+		history.push('/search?query='+input.current.value);
     }
 
     return (

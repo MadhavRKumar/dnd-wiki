@@ -30,7 +30,7 @@ class App extends Component {
             <Search />
             <EditArticle />
           </Route>
-          <Route path='/search/:query'>
+          <Route path='/search'>
             <NavBar />
             <Search />
             <SearchResult />

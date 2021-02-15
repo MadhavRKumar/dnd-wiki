@@ -8,7 +8,8 @@ import Loader from './Loader';
 
 export default function SearchResult() {
     let isLoading = useLoading();
-	let { query } = useParams();
+	let { search }= useLocation();
+	let  query  = new URLSearchParams(search).get('query');
 	let res = useSearch(query);
 
     if (isLoading) {

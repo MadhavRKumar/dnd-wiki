@@ -107,7 +107,7 @@ async function handleArticle(req, res, isNewArticle) {
 }
 
 const searchArticle = (req, res) => {
-    const query = req.params.query;
+    const query = req.query.query;
     pool.query('SELECT page_title, text FROM pages JOIN (SELECT revisions.id,text FROM revisions join text ON revisions.rev_text_id = text.id) AS t ON pages.page_latest = t.id WHERE lower(page_title) = lower($1);', [query],
     (err, result) => {
             if (err) {
@@ -134,7 +134,7 @@ const searchArticle = (req, res) => {
 }
 
 app.get('/api/article/:pageTitle', getArticle);
-app.get('/api/search/:query', searchArticle);
+app.get('/api/search', searchArticle);
 app.put('/api/:pageTitle', putArticle);
 
 if(process.env.NODE_ENV === 'production') {

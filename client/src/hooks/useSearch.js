@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 let callAPI = async (searchQuery) => {
 	const encodedQuery = encodeURIComponent(searchQuery);
-    const response = await fetch(`/api/search/${encodedQuery}`);
+    const response = await fetch(`/api/search?query=${encodedQuery}`);
     const body = await response.json();
     if (response.status !== 200) 
     {
