@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
-import Article from './Article';
-import Editor from './Editor';
+import Article from '../Article';
+import Editor from '../Editor';
 import { useHistory } from 'react-router-dom';
 
 export default function CreateArticle() {
