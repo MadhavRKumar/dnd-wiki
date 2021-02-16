@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useAPI from '../hooks/useAPI';
-import Loader from './Loader';
-import Article from './Article';
-import ArticleContent from './ArticleContent';
-import Title from './Title';
+import useAPI from '../../hooks/useAPI';
+import Loader from '../Loader';
+import Article from '../Article';
+import ArticleContent from '../ArticleContent';
+import Title from '../Title';
 
 
 export default function ViewArticle() {
