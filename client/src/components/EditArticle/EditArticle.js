@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
-import useAPI from '../hooks/useAPI';
+import useAPI from '../../hooks/useAPI';
 import { useHistory } from 'react-router-dom';
-import Loader from './Loader';
-import Editor from './Editor';
-import Article from './Article';
-import Title from './Title';
+import Loader from '../Loader';
+import Editor from '../Editor';
+import Article from '../Article';
+import Title from '../Title';
 
 export default function EditArticle() {
 
