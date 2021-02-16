@@ -1,9 +1,9 @@
 import React from 'react';
-import Search from './Search';
-import Loader from './Loader';
+import Search from '../Search';
+import Loader from '../Loader';
 import logo from './logo.png';
 import { Link } from 'react-router-dom';
-import useLoading from '../hooks/useLoading';
+import useLoading from '../../hooks/useLoading';
 
 export default function Home() {
     let isLoading = useLoading();
