@@ -1,22 +1,19 @@
-import React, { Component } from 'react';
-import Article from './components/ViewArticle';
+import React from 'react';
+import Article from '../ViewArticle';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from 'react-router-dom';
 import './App.css';
-import EditArticle from './components/EditArticle';
-import Home from './components/Home';
-import SearchResult from './components/SearchResult';
-import CreateArticle from './components/CreateArticle';
-import NavBar from './components/NavBar';
-import Search from './components/Search';
+import EditArticle from '../EditArticle';
+import Home from '../Home';
+import SearchResult from '../SearchResult';
+import CreateArticle from '../CreateArticle';
+import NavBar from '../NavBar';
+import Search from '../Search';
 
-class App extends Component {
-
-
-  render() {
+export default function App() {
     return (
       <Router>
         <Switch>
@@ -44,8 +41,5 @@ class App extends Component {
         </Switch>
       </Router>
     );
-  }
-
 }
 
-export default App;

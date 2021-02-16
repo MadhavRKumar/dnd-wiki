@@ -68,7 +68,7 @@ input[type="search"]::-webkit-search-results-decoration {
 /*********************  Generic Classes  *********************/
 body {
   line-height: 1;
-  background: url(./background.png);
+  background: url(../../background.png);
 }
 
 
