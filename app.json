@@ -1,0 +1,10 @@
+{
+	"environments": {
+		"test": {
+			"scripts": {
+				"test-setup": "cd client && npm install", 
+				"test": "cd client && npm run test"
+			}
+		}
+
+}
