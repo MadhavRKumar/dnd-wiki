@@ -6,5 +6,5 @@
 				"test": "cd client && npm run test"
 			}
 		}
-
+	}
 }
