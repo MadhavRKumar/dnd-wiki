@@ -14,7 +14,7 @@ export default function Home() {
     else {
         return (
             <div className="flex-container-centered">
-                <img src={logo} alt="Green DnD 5e with the word WIKI underneath" className="logo" />
+                <img role="banner" src={logo} alt="Green DnD 5e logo with the word WIKI underneath" className="logo" />
                 <Search />
                 <Link className="create-link" to="/create" >Create Article</Link>
             </div>);
