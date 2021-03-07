@@ -22,7 +22,7 @@ export default function EditArticle() {
         urlencoded.append('text', inputEl.current.value);
 
         var requestOptions = {
-            method: 'PUT',
+            method: 'POST',
             headers: myHeaders,
             body: urlencoded,
             redirect: 'follow'

@@ -39,7 +39,7 @@ const getArticle = (req, res) => {
         })
 }
 
-const putArticle = (req, res) => {
+const postArticle = (req, res) => {
     const pageTitle = req.params.pageTitle;
     pool.query('SELECT id FROM pages WHERE lower(page_title) = lower($1)', [pageTitle],
         (err, result) => {
@@ -135,7 +135,7 @@ const searchArticle = (req, res) => {
 
 app.get('/api/article/:pageTitle', getArticle);
 app.get('/api/search', searchArticle);
-app.put('/api/:pageTitle', putArticle);
+app.post('/api/:pageTitle', postArticle);
 
 if(process.env.NODE_ENV === 'production') {
     app.get('*', (req, res) => {
