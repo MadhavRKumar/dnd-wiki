@@ -17,7 +17,7 @@ export default function CreateArticle() {
         urlencoded.append('text',text);
         if(title && text) {
             let requestOptions = {
-                method: 'PUT',
+                method: 'POST',
                 headers: myHeaders,
                 body: urlencoded,
                 redirect: 'follow'
