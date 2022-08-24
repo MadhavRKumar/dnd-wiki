@@ -27,7 +27,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-sslify": "^1.2.0",
-    "pg": "^8.5.1"
+    "pg": "^8.8.0"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
